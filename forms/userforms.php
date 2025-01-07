@@ -110,6 +110,7 @@ public function verification_form(){
             <th>Email</th>
         </tr>
         <tr>
+            
             <td><?php echo $_SESSION['firstname'] ?></td>
             <td><?php echo $_SESSION['lastname'] ?></td>
             <td><?php echo $_SESSION['email'] ?></td>
