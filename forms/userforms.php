@@ -81,4 +81,23 @@ class userForms{
       </div>
       <?php
 }
+public function verification_form(){
+    ?>
+    <div class = "container d-flex gap-3 justify-content-center align-items-center mt-2">
+  <form method = "POST">
+    <div class="form-group p-3">
+      <input type="hidden" name = "email" class="form-control" value ="<?php echo $_GET['email']; ?>" required>
+    </div>
+    <div class="form-group p-3">
+      <label for="verificationcode">Verification Code</label>
+      <input type="text" name = "verificationcode" class="form-control" id="verificationcode" placeholder="Enter Verification Code"  required>
+    </div>
+    <button type="submit" class="btn btn-primary" name = "verify_email" value= "Verify">Submit</button>
+    <div>
+    <a href = "index.php">Back to home</a>
+    </div>
+  </form>
+  </div>
+    <?php
+   }
 }
