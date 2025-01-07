@@ -18,6 +18,6 @@ spl_autoload_register('classAutoLoad');
 
 // Creating an instance of a class
 $ObjLayout = new layout();
-$ObjContent = new contents();
+$ObjContent = new pagecontent();
 $ObjProcesses = new process();
 $ObjUserForm = new userForms();
