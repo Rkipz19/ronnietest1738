@@ -1,5 +1,6 @@
 <?php
-require 'classes/connect.php';
+set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\Apache24\htdocs\Transport\classes'); 
+require_once 'connect.php';
 class process extends connection{
     public function signup_process(){
         if(isset($_POST['submit'])){
