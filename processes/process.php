@@ -75,9 +75,9 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
                 if($user['email_verified_at'] == NULL){
                     echo "Please verify your email <a href = 'userverification.php?email=".$email."'>here</a>";
                     }else{
-                    $_SESSION['email'] = $email;
-                    header("Location: userpage.php");
-                    }
+                        $_SESSION['email'] = $email;
+                        header("Location: userpage.php");
+                        }
             }
         }
     }
