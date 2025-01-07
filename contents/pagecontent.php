@@ -77,4 +77,30 @@ class pagecontent{
         </section>
         <?php
     }
+    public function aboutus(){
+        ?>
+        <section id = "aboutus">
+        <div>
+        <h4 style = "text-align:center">About us</h4>
+      </div>
+        <div class = "row justify-content-evenly">
+        <div class = "col-4 border border-info">
+          <h6>Deliver Resources</h6>
+          <p>The Urban Links Transport transports produce<br> such as cereals, livestock, perishable
+            like<br> milk, eggs, fish and flowers, and<br> farm inputs such as fertilizers, manure,<br> herbicides,
+            pesticides and seeds.
+          </p>
+        </div>
+        <div class = "col-4 border border-info">
+          <h6>Shipping to retailers</h6>
+          <p>We provide transportation of the agricultural<br> goods for farmers between farms and<br>
+            retail-outlets, instead of having consumer<br> pick up the agricultural produce directly<br> from
+            farmers.
+          </p>
+        </div>
+      </div>
+      
+      </section>
+      <?php
+    }
 }
