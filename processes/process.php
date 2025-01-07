@@ -13,7 +13,7 @@ class process extends connection{
 
                 //Load Composer's autoloader
 require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
-        if(isset($_POST['submit'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
@@ -49,7 +49,9 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
             $sql = "INSERT INTO users (firstname, lastname, email, password, verification_code,email_verified_at) VALUES ( '$firstname', '$lastname', '$email', '$encrypted_password', '$verification_code',NULL)";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-        
+       
+        $email1 = filter_var($email, FILTER_SANITIZE_EMAIL);
+        header("Location:userverification.php?email=" . urlencode($email1));
         }catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -91,6 +93,7 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
                 echo "Invalid verification code";
             }
         }
-    }
+    
 
+}
 }
