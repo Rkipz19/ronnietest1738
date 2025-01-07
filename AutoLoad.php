@@ -20,3 +20,4 @@ spl_autoload_register('classAutoLoad');
 $ObjLayout = new layout();
 $ObjContent = new contents();
 $ObjProcesses = new process();
+$ObjUserForm = new userForms();
