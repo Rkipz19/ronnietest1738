@@ -2,7 +2,6 @@
 
 
 // Method Auto Load
-
 function classAutoLoad($classname){
     $directories = ["classes", "contents", "forms", "processes", "global", "menus"];
 
