@@ -1,19 +1,58 @@
 <?php
+//include 'C:\Apache24\htdocs\Transport\classes\init.php';
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\Apache24\htdocs\Transport\classes'); 
 require_once 'connect.php';
 class process extends connection{
     public function signup_process(){
+
+                //Load Composer's autoloader
+require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
         if(isset($_POST['submit'])){
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
 
+            $mail = new PHPMailer(true);
+   
+            try {
+              $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+              $mail->isSMTP();                                            //Send using SMTP
+              $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+              $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+              $mail->Username   = 'ronnie.kipkoech@strathmore.edu';                     //SMTP username
+              $mail->Password   = 'muettovltjukasab';                               //SMTP password
+              $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+              $mail->Port       = 465;    
+          
+              //Recipients
+              $mail->setFrom('Urbanlinktranport@example.com', 'Urbanlink Transport.com');
+              $mail->addAddress($email,$firstname); 
+              //Content
+              $mail->isHTML(true);                                  //Set email format to HTML
+              $verification_code = substr(number_format(time() * rand(),0,'',''),0,6);
+              $mail->Subject = 'Email Verification Code';
+              $mail->Body    = '<p>Your verification code is: <b>'.$verification_code.'</b></p>';
+                  //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+              
+              $mail->send();
+              echo 'Message has been sent';
+          
+              $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (firstname, lastname, email, password, verification_code,email_verified_at) VALUES ( '$firstname', '$lastname', '$email', '$encrypted_password', '$verification_code',NULL)";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
+        }  catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
+}
     public function login_process(){
         if(isset($_POST['submit'])){
             $email = $_POST['email'];
