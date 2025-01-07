@@ -2,7 +2,6 @@
 //Importing content from an external file
 require_once "AutoLoad.php";
 
-require 'AutoLoad.php';
 
 $Objlayout-> header("Urban Links Transport");
 $Objpagecont->navbar();
