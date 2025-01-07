@@ -59,4 +59,26 @@ class userForms{
   </div>
         <?php
     }
+    public function login_form(){
+        ?>
+      <div class = "container d-flex gap-3 my-5 justify-content-center align-items-center">
+        <form class = "needs-validation" class = "col-log-6 offset-lg-3" method = "POST" novalidate>
+          <div class="form-group p-3">
+            <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group p-3">
+          <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+              <input type="checkbox" onclick="myFunction()">Show password
+          </div>
+      <div>
+        <p>Don't have an account? <a href = "usersignup.php">Sign up</a></p>
+        <p>Back home <a href = "index.php"> Home</a></p>
+        </div>
+        <button type="submit" class="btn btn-primary" name = "login">Submit</button>
+      </form>
+      </div>
+      <?php
+}
 }
