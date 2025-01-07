@@ -3,9 +3,9 @@
 require_once "AutoLoad.php";
 
 
-$Objlayout-> header("Urban Links Transport");
+$ObjLayout-> heading();
 $Objpagecont->navbar();
 $Objpagecont->carousel();
 $Objpagecont->aboutus();
-$Objlayout->footer(); 
+$ObjLayout->footer(); 
 
