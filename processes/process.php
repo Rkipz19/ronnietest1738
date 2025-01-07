@@ -8,6 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\Apache24\htdocs\Transport\classes'); 
 require_once 'connect.php';
+session_start();
 class process extends connection{
     public function signup_process(){
 
@@ -101,5 +102,19 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
         }
     
 
+}
+public function userpage_process(){
+    if(!isset($_SESSION['email'])){
+        header("Location: userlogin.php");
+    }else{
+    $currentuser = $_SESSION['email'];
+    $sql = "SELECT * FROM `users` WHERE `email` = '$currentuser'";
+    $result = $this->connect()->prepare($sql);
+    $result->execute();
+    $row = $result->fetch();
+    $firstname = $row['firstname'];
+    $lastname = $row['lastname'];
+    $email = $row['email'];
+    }
 }
 }
