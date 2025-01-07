@@ -112,9 +112,9 @@ public function userpage_process(){
     $result = $this->connect()->prepare($sql);
     $result->execute();
     $row = $result->fetch();
-    $firstname = $row['firstname'];
-    $lastname = $row['lastname'];
-    $email = $row['email'];
+    $_SESSION['firstname'] = $row['firstname'];
+    $_SESSION['lastname'] = $row['lastname'];
+    $_SESSION['email'] = $row['email'];
     }
 }
 }
