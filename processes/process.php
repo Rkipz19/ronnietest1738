@@ -58,7 +58,7 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
     }
 }
     public function login_process(){
-        if(isset($_POST['submit'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = $_POST['email'];
             $password = $_POST['password'];
        
@@ -72,6 +72,12 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
                 }else{
                     echo '<script>alert("Invalid password")</script>';
                 }
+                if($user['email_verified_at'] == NULL){
+                    echo "Please verify your email <a href = 'userverification.php?email=".$email."'>here</a>";
+                    }else{
+                    $_SESSION['email'] = $email;
+                    header("Location: userpage.php");
+                    }
             }
         }
     }
