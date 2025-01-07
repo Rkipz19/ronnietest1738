@@ -43,12 +43,14 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
               
               $mail->send();
               echo 'Message has been sent';
-          
-              $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+
             $sql = "INSERT INTO users (firstname, lastname, email, password, verification_code,email_verified_at) VALUES ( '$firstname', '$lastname', '$email', '$encrypted_password', '$verification_code',NULL)";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-        }  catch (Exception $e) {
+        
+        }catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
@@ -68,6 +70,25 @@ require 'C:/Apache24/htdocs/PHPMailer/vendor/autoload.php';
                 }else{
                     echo '<script>alert("Invalid password")</script>';
                 }
+            }
+        }
+    }
+    public function verify_process(){
+        if(isset($_POST['verify_email'])){
+            $email = $_POST['email'];
+            $verification_code = $_POST['verificationcode'];
+            $sql = "SELECT * FROM users WHERE email = '$email'";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $user = $stmt->fetch();
+            if($user['verification_code'] == $verification_code){
+                $sql = "UPDATE users SET email_verified_at = NOW() WHERE email = '$email'";
+                $stmt = $this->connect()->prepare($sql);
+                $stmt->execute();
+                echo "Email verified successfully";
+                header("Location: userlogin.php");
+            }else{
+                echo "Invalid verification code";
             }
         }
     }
