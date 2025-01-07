@@ -112,3 +112,21 @@ document.getElementById("myButton").addEventListener("click", function() {
       }
     }, false);
   })();
+
+  function myFunction(){
+    var p = document.getElementById("password");
+    if(p.type === "password"){
+        p.type = "text";
+    }else{
+        p.type = "password";
+    }
+}
+
+function myFunction1(){
+    var p = document.getElementById("confirmpassword");
+    if(p.type === "password"){
+        p.type = "text";
+    }else{
+        p.type = "password";
+    }
+}
