@@ -1,6 +1,6 @@
 <?php
-
-class process{
+require 'classes/connect.php';
+class process extends connection{
     public function signup_process(){
         if(isset($_POST['submit'])){
             $firstname = $_POST['firstname'];
@@ -31,4 +31,5 @@ class process{
             }
         }
     }
+
 }
