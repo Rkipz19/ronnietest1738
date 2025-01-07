@@ -100,4 +100,24 @@ public function verification_form(){
   </div>
     <?php
    }
+   public function userpage(){
+    ?>
+    <div class = "d-flex justify-content-start">
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td><?php echo $_SESSION['firstname'] ?></td>
+            <td><?php echo $_SESSION['lastname'] ?></td>
+            <td><?php echo $_SESSION['email'] ?></td>
+    </table>
+  </div>
+  <div>
+    <a href = "logout.php">Logout</a>
+  </div>
+  <?php
+   }
 }
