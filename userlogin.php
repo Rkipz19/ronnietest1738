@@ -1,7 +1,7 @@
 <?php
 require_once "AutoLoad.php";
 
-$Objlayout -> header();
+$ObjLayout -> header();
 $ObjProcesses -> login_process();
 $ObjUserForm -> login_form();
-$Objlayout -> footer();
+$ObjLayout -> footer();
