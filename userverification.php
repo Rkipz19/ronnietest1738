@@ -1,8 +1,8 @@
 <?php
 require_once "AutoLoad.php";
 
-$Objlayout -> header();
+$ObjLayout -> header();
 $ObjProcesses -> verify_process();
 $ObjUserForm ->verification_form();
-$Objlayout -> footer();
+$ObjLayout -> footer();
 ?>
