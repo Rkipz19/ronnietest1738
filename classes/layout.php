@@ -1,6 +1,6 @@
 <?php
 class layout{
-    public function heading(){
+    public function header(){
         ?>
 <!DOCTYPE html>
 <html>
