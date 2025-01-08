@@ -20,3 +20,4 @@ $ObjLayout = new layout();
 $ObjContent = new pagecontent();
 $ObjProcesses = new process();
 $ObjUserForm = new userForms();
+$Objpagecont = new pagecontent();
