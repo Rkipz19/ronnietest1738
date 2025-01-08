@@ -3,7 +3,7 @@
 require_once "AutoLoad.php";
 
 
-$ObjLayout-> heading();
+$ObjLayout-> header();
 $Objpagecont->navbar();
 $Objpagecont->carousel();
 $Objpagecont->aboutus();
